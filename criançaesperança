@@ -1,0 +1,87 @@
+Algoritmo "Criança Esperança"
+//-----------------------------------
+procedimento confirmacao()
+var
+inicio
+   EscrevaL("[1] Confirma a doação no valor de R$", Valor:3:2, "?")
+   EscrevaL("[2] Cancela a doação")
+   Leia(N)
+   Se N = 1 entao
+      EscrevaL(" Você doou R$", Valor, ",00.")
+      EscrevaL(" Obrigado pela participação!")
+      a <- VERDADEIRO
+   Senao
+      Se N = 2 entao
+         cancelamento()
+      Senao
+         opcao_invalida()
+      Fimse
+   Fimse
+fimprocedimento
+//-----------------------------------
+procedimento cancelamento()
+var
+inicio
+   EscrevaL(" Você cancelou a participação.")
+   a <- VERDADEIRO
+fimprocedimento
+//-----------------------------------
+procedimento opcao_invalida()
+var
+inicio
+   EscrevaL(" Opção inválida.")
+   EscrevaL(" [1] Voltar ao menu principal")
+   EscrevaL(" [2] Cancelar doação")
+   EscrevaL(" Escolha uma opção: ")
+   Leia(N)
+   Escolha N
+      Caso 1
+         a <- FALSO
+      Caso 2
+         cancelamento()
+      Outrocaso
+         opcao_invalida()
+   FimEscolha
+fimprocedimento
+//-----------------------------------
+var
+   N, Valor : inteiro
+   a: logico
+inicio
+   EscrevaL("-----------------------")
+   EscrevaL("   CRIANÇA ESPERANÇA   ")
+   EscrevaL("-----------------------")
+   Enquanto a = FALSO faca
+      EscrevaL(" Para doar 15 reais, pressione [1]")
+      EscrevaL(" Para doar 20 reais, pressione [2]")
+      EscrevaL(" Para doar 30 reais, pressione [3]")
+      EscrevaL(" Para doar 40 reais, pressione [4]")
+      EscrevaL(" Para doar outros valores, pressione [5]")
+      EscrevaL(" Para cancelar, pressione [6]")
+      EscrevaL()
+      Escreva(" Pressione a opção desejada: ")
+      Leia(N)
+      Escolha N
+         Caso 1
+            Valor := 15
+            confirmacao()
+         Caso 2
+            Valor := 20
+            confirmacao()
+         Caso 3
+            Valor := 30
+            confirmacao()
+         Caso 4
+            Valor := 40
+            confirmacao()
+         Caso 5
+            Escreva(" Por favor, digite a quantia que deseja doar:")
+            Leia(Valor)
+            confirmacao()
+         Caso 6
+            cancelamento()
+         OutroCaso
+            opcao_invalida()
+      FimEscolha
+   FimEnquanto
+Fimalgoritmo
